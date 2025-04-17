@@ -1,0 +1,206 @@
+<!-- My Website-->
+<!DOCTYPE html>
+<html>
+<head>
+
+	<script src="script.js" defer></script>
+
+    <link href="styles.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Lauren's Portfolio</title> <!-- browser tab title  -->
+
+	<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/1a070065cd.js" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+	<ul class="tabs">
+		<li data-tab-target="#home" class="tab active">home</li>
+		<li data-tab-target="#about-me" class="tab">about me</li>
+		<li data-tab-target="#hobbies" class="tab">hobbies</li>
+		<li data-tab-target="#sources" class="tab">sources</li>
+	</ul>
+	
+	<div class="tab-content active" id="home" data-tab-content>
+		<!-- Home content-->
+		<section id="profile">
+		<div class="profile-container">
+			<img src = "linkedinme.jpeg" width = "500" height = "500" class="my-picture"> </img>
+		</div>
+		<div class="home-text"></div>
+			<h1 class="home-text-title">Welcome to Lauren's Website!</h1>
+			<p class="home-text-p1"> My GTID is 903982820</p>
+		</section>
+
+	</div>
+	
+	
+
+	<div class="tab-content" id="about-me" data-tab-content>
+		<!-- About me content -->
+		<h1>About Me</h1>
+		<p class="home-text-p2"> Hello everyone! &#128075; My name is Lauren Kim and I am a first year PUBP major at GT</p>
+		<p class="home-text-p3"> I am currently a first year public policy major at the Georgia Institute of Technology! I am also taking CS1315 this semester, which is where I learned to code this website. By majoring in public policy at GT, I hope to create a future where technology and policy are able to be increasingly connected. This is especially true as someone who is especially concerned about issues that require technical solutions, such as sustainability and environmental causes. Please enjoy the rest of this website! I had a lot of fun playing around with it and I hope you do too! :) </p>
+		<p class="home-text-p3"> Click <a href="https://www.gatech.edu/">HERE</a> to learn more about Georgia Tech!</p>
+		<p class="home-text-p3"> Click on the photo below to learn more about public policy at Georgia Tech!</p>
+		<p><a href="https://spp.gatech.edu/"><img src="gt.png" width = "250" height = "250"></a></p>
+	</div>
+
+	<div class="tab-content" id="hobbies" data-tab-content>
+		<!-- Hobbies content -->
+		<h1>hobbies</h1>
+        <h3>These are some of my hobbies!</h3>
+		<h3> My hobbies are: </h3>
+		<ol>
+			<li>Reading</li>
+			<li>Listening to music</li>
+			<li>Hanging out with my friends </li>
+			<li>Playing the NYT Games!</li>
+		</ol>
+		<h3> These are some of my favorite books: </h3>
+		<table style="border: solid 1px black; border-collapse: collapse;">
+			<tr>
+			<th style="border: solid 1px black;">Title</th>
+			<th style="border: solid 1px black;">Author</th>
+			</tr>
+			<tr>
+			<td style="border: solid 1px black;">In Cold Blood</td>
+			<td style="border: solid 1px black;">Truman Capote</td>
+			</tr>
+			<tr>
+				<td style="border: solid 1px black;">Atonement</td>
+				<td style="border: solid 1px black;">Ian McEwan</td>
+			</tr>
+			<tr>
+				<td style="border: solid 1px black;">Love in the Time of Cholera</td>
+				<td style="border: solid 1px black;">Gabriel García Márquez</td>
+			</tr>
+			<tr>
+				<td style="border: solid 1px black;">Never Let Me Go</td>
+				<td style="border: solid 1px black;">Kazuo Ishiguro</td>
+			</tr>
+			<tr>
+				<td style="border: solid 1px black;">Franny and Zooey</td>
+				<td style="border: solid 1px black;">J.D. Salinger</td>
+			</tr>
+			<tr>
+				<td style="border: solid 1px black;">Play It As It Lays</td>
+				<td style="border: solid 1px black;">Joan Didion</td>
+			</tr>
+			<tr>
+				<td style="border: solid 1px black;">Just Kids</td>
+				<td style="border: solid 1px black;">Patti Smith</td>
+			</tr>
+		</table>
+		<h3> This is one of my favorite songs: </h3>
+		<!--Audio Player -->
+		<div class = "container">
+			<div class = "music-player">
+			<nav>
+				<div class = "circle">
+					<i class="fa-solid fa-angle-left"></i>
+				</div>
+				<div class = "circle">
+					<i class="fa-solid fa-bars"></i>
+				</div>
+			</nav>
+		</div>
+		<img src="thumbnail.png" width = "200" height = "250" class="song-img"></img>
+		<h1>Forget Her</h1>
+		<p>Jeff Buckley</p>
+	
+		<audio controls id="song">
+			<source src = "SpotifyMate.com - Forget Her - Jeff Buckley.mp3" type = "audio/mpeg">
+		</audio>
+		<input type="range" value="0" id="progress"></input>
+
+		<div class="controls"> 
+			<div><i class="fa-solid fa-backward"></i></div>
+			<div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
+			<div><i class="fa-solid fa-forward"></i></div>
+		</div>
+	</div>
+	
+	<script>
+			
+		let progress = document.getElementById("progress");
+		let song = document.getElementById("song");
+		let ctrlIcon = document.getElementById("ctrlIcon");
+
+		song.onloadedmetadata = function() {
+			progress.max = song.duration;
+			progress.value = song.currentTime;
+		}
+
+		function playPause() {
+			if (ctrlIcon.classList.contains("fa-pause")) {
+				song.pause();
+				ctrlIcon.classList.remove("fa-pause");
+				ctrlIcon.classList.add("fa-play");
+			} else {
+				song.play();
+				ctrlIcon.classList.add("fa-pause");
+				ctrlIcon.classList.remove("fa-play");
+				setInterval(() => {
+					progress.value = song.currentTime;
+				}, 100);
+			
+			}
+
+		}
+
+		progress.oninput = function() {
+			song.currentTime = progress.value;
+			song.play();
+			ctrlIcon.classList.add("fa-pause")
+			ctrlIcon.classList.remove("fa-play");
+		}
+	</script>
+
+		
+	</div>
+
+	<div class="tab-content" id="sources" data-tab-content>
+		<!-- Sources content -->
+		<h1>Sources</h1>
+		<h4>These are the sources that I used to help me create this website!</h4>
+		<p>YOUTUBE LINK ONE: <a href="https://youtu.be/5L6h_MrNvsk?si=-PjojE9Y_LRJK3mv">https://youtu.be/5L6h_MrNvsk?si=-PjojE9Y_LRJK3mv</a></li></p>
+		<td><iframe width="560" height="315" 
+			src="https://www.youtube.com/embed/5L6h_MrNvsk?si=-PjojE9Y_LRJK3mv" 
+			title="YouTube video player" frameborder="0" allow="accelerometer; 
+			autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; 
+			web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
+		<p>YOUTUBE LINK TWO: <a href="https://www.youtube.com/watch?v=JtrFzoL1joI">https://www.youtube.com/watch?v=JtrFzoL1joI</a></li></p>
+		<td><iframe width="560" height="315" 
+			src="https://www.youtube.com/embed/JtrFzoL1joI?si=4STRApLA7qTRi8lw" 
+			title="YouTube video player" frameborder="0" allow="accelerometer; 
+			autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; 
+			web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
+		<p>YOUTUBE LINK THREE: <a href="https://www.youtube.com/watch?v=ldwlOzRvYOU">https://www.youtube.com/watch?v=ldwlOzRvYOU</a></li></p>
+		<td><iframe width="560" height="315" 
+			src="https://www.youtube.com/embed/ldwlOzRvYOU?si=QjyMIh8TW6ETjBfw" 
+			title="YouTube video player" frameborder="0" allow="accelerometer; 
+			autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;
+			web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+	</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
